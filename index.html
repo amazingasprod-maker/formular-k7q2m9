@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Spendenaufruf: Angaben von ARCA</title>
+<style>
+  :root { --ink:#1b1b1b; --muted:#6b6b6b; --line:#d9d4cc; --bg:#faf7f2; --accent:#1b1b1b; --ok:#2f6b3a; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:17px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink); background:var(--bg); }
+  main { max-width:640px; margin:0 auto; padding:20px 16px 120px; }
+  h1 { font-size:1.45rem; line-height:1.2; margin:8px 0 6px; }
+  .lead { color:var(--muted); margin:0 0 20px; }
+  fieldset { border:1px solid var(--line); border-radius:14px; background:#fff; padding:14px 14px 6px; margin:0 0 16px; }
+  legend { font-weight:700; padding:0 6px; font-size:1.02rem; }
+  .q { margin:0 0 14px; }
+  .q > label.t, .q > .t { display:block; font-weight:600; margin-bottom:6px; }
+  .hint { color:var(--muted); font-size:.9rem; margin:-2px 0 8px; }
+  input[type=text], input[type=number], input[type=date], textarea, select {
+    width:100%; font:inherit; padding:12px; border:1px solid #bdb6aa; border-radius:10px; background:#fff; color:var(--ink); }
+  textarea { min-height:84px; resize:vertical; }
+  .opt { display:flex; align-items:flex-start; gap:12px; padding:11px 12px; border:1px solid var(--line); border-radius:10px; margin:0 0 8px; cursor:pointer; }
+  .opt input { width:22px; height:22px; margin:1px 0 0; flex:none; accent-color:var(--accent); }
+  .opt:has(input:checked) { border-color:var(--accent); background:#f1ece3; }
+  .row { display:flex; gap:10px; } .row > div { flex:1; }
+  .quote { background:#f1ece3; border-radius:10px; padding:10px 12px; font-size:.95rem; margin:0 0 10px; }
+  .bar { position:fixed; left:0; right:0; bottom:0; background:#fff; border-top:1px solid var(--line); padding:10px 16px calc(10px + env(safe-area-inset-bottom)); }
+  .bar .in { max-width:640px; margin:0 auto; display:flex; gap:10px; }
+  button { font:inherit; font-weight:700; padding:14px 12px; border-radius:12px; border:0; cursor:pointer; flex:1; }
+  .send { background:var(--accent); color:#fff; } .copy { background:#ece6db; color:var(--ink); }
+  #status { text-align:center; color:var(--ok); font-size:.9rem; min-height:1.2em; margin:8px 0 0; }
+  #out { display:none; white-space:pre-wrap; background:#fff; border:1px dashed #bdb6aa; border-radius:10px; padding:12px; font:14px/1.4 ui-monospace,Consolas,monospace; margin-top:14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Spendenaufruf: ein paar Angaben von euch</h1>
+  <p class="lead">Danke für die Sprachnachricht. Damit nichts Falsches drinsteht, brauchen wir diese Angaben. Alles ist freiwillig: lasst leer, was ihr nicht wisst. Am Ende unten auf <b>Senden</b> tippen und an Lamine schicken.</p>
+
+  <form id="f" autocomplete="off" onsubmit="return false">
+
+  <fieldset data-s="1. Miete 2027"><legend>1. Miete 2027</legend>
+    <div class="row">
+      <div class="q"><label class="t" for="m1">Monatsmiete (€)</label><input id="m1" name="Monatsmiete (€)" type="number" inputmode="decimal"></div>
+      <div class="q"><label class="t" for="m2">Jahresbetrag (€)</label><input id="m2" name="Jahresbetrag (€)" type="number" inputmode="decimal"></div>
+    </div>
+    <div class="q"><label class="t" for="m3">Spendenziel für 2027 (€)</label><input id="m3" name="Spendenziel für 2027 (€)" type="number" inputmode="decimal"></div>
+    <div class="q"><span class="t">Dürfen wir den Betrag öffentlich nennen?</span>
+      <label class="opt"><input type="radio" name="Betrag öffentlich?" value="Ja, öffentlich"><span>Ja, öffentlich</span></label>
+      <label class="opt"><input type="radio" name="Betrag öffentlich?" value="Nein, nur in den Briefen"><span>Nein, nur in den Briefen</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-s="2. Gemeinnützigkeit"><legend>2. Gemeinnützigkeit</legend>
+    <div class="q"><span class="t">Seid ihr als gemeinnützig anerkannt?</span>
+      <label class="opt"><input type="radio" name="Gemeinnützig anerkannt?" value="Ja"><span>Ja</span></label>
+      <label class="opt"><input type="radio" name="Gemeinnützig anerkannt?" value="Nein"><span>Nein</span></label>
+      <label class="opt"><input type="radio" name="Gemeinnützig anerkannt?" value="Weiß ich nicht"><span>Weiß ich nicht</span></label>
+    </div>
+    <div class="q"><label class="t" for="g1">Welcher Bescheid?</label>
+      <select id="g1" name="Art des Bescheids"><option value="">bitte wählen</option><option>Freistellungsbescheid</option><option>Feststellungsbescheid nach § 60a AO</option></select></div>
+    <div class="q"><label class="t" for="g2">Datum des Bescheids</label><input id="g2" name="Datum des Bescheids" type="date"></div>
+    <div class="q"><span class="t">Stellt ihr Zuwendungsbestätigungen aus?</span>
+      <label class="opt"><input type="radio" name="Zuwendungsbestätigungen?" value="Ja"><span>Ja</span></label>
+      <label class="opt"><input type="radio" name="Zuwendungsbestätigungen?" value="Nein"><span>Nein</span></label>
+    </div>
+    <div class="q"><label class="t" for="g3">Ab welchem Betrag? (€)</label><input id="g3" name="Zuwendungsbestätigung ab (€)" type="number" inputmode="decimal"></div>
+  </fieldset>
+
+  <fieldset data-s="3. Konto"><legend>3. Konto</legend>
+    <div class="q"><label class="t" for="k1">Kontoinhaber</label><input id="k1" name="Kontoinhaber" type="text"></div>
+    <div class="q"><span class="t">Welche Konten nennen wir?</span>
+      <label class="opt"><input type="checkbox" name="Konten" value="GLS"><span>GLS</span></label>
+      <label class="opt"><input type="checkbox" name="Konten" value="HASPA"><span>HASPA</span></label>
+    </div>
+    <div class="q"><label class="t" for="k2">Verwendungszweck</label><input id="k2" name="Verwendungszweck" type="text"></div>
+  </fieldset>
+
+  <fieldset data-s="4. Förderung durch die Sozialbehörde"><legend>4. Förderung durch die Sozialbehörde</legend>
+    <p class="hint">Wichtig für Stiftungen, wegen Doppelförderung.</p>
+    <div class="q"><span class="t">Ist die Miete der Fasiathek durch die Koordinierungsstelle gedeckt?</span>
+      <label class="opt"><input type="radio" name="Miete durch Koordinierungsstelle gedeckt?" value="Nein, nicht gedeckt"><span>Nein, nicht gedeckt</span></label>
+      <label class="opt"><input type="radio" name="Miete durch Koordinierungsstelle gedeckt?" value="Teilweise"><span>Teilweise</span></label>
+      <label class="opt"><input type="radio" name="Miete durch Koordinierungsstelle gedeckt?" value="Ja, gedeckt"><span>Ja, gedeckt</span></label>
+    </div>
+    <div class="q"><label class="t" for="s1">Wenn teilweise: was genau?</label><textarea id="s1" name="Teilweise gedeckt"></textarea></div>
+    <div class="q"><span class="t">Nennen wir die Förderung der Koordinierungsstelle im Brief an Stiftungen?</span>
+      <label class="opt"><input type="radio" name="Förderung im Brief nennen?" value="Ja"><span>Ja</span></label>
+      <label class="opt"><input type="radio" name="Förderung im Brief nennen?" value="Nein"><span>Nein</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-s="5. Aussage zur Miete"><legend>5. Aussage zur Miete</legend>
+    <div class="quote">„Die Miete für 2027 ist noch nicht gesichert.“</div>
+    <div class="q"><span class="t">Dürfen wir das schreiben?</span>
+      <label class="opt"><input type="radio" name="Aussage erlaubt?" value="Ja, auch öffentlich"><span>Ja, auch öffentlich</span></label>
+      <label class="opt"><input type="radio" name="Aussage erlaubt?" value="Nur in den Briefen"><span>Nur in den Briefen</span></label>
+      <label class="opt"><input type="radio" name="Aussage erlaubt?" value="Besser nicht"><span>Besser nicht</span></label>
+    </div>
+    <div class="q"><span class="t">Ist die Fasiathek ohne Spenden 2027 gefährdet?</span>
+      <label class="opt"><input type="radio" name="Fasiathek 2027 gefährdet?" value="Ja"><span>Ja</span></label>
+      <label class="opt"><input type="radio" name="Fasiathek 2027 gefährdet?" value="Nein"><span>Nein</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-s="6. Unterschrift der Briefe"><legend>6. Unterschrift der Briefe</legend>
+    <p class="hint">Die Briefe unterschreibt Millicent Adjei.</p>
+    <div class="q"><label class="t" for="u1">Funktion von Millicent im Verein</label><input id="u1" name="Funktion von Millicent Adjei" type="text"></div>
+    <div class="q"><label class="t" for="u2">Telefon und E-Mail für Rückfragen</label><input id="u2" name="Telefon und E-Mail für Rückfragen" type="text"></div>
+  </fieldset>
+
+  <fieldset data-s="7. Empfänger"><legend>7. Empfänger</legend>
+    <p class="hint">Falls ihr Kontakte oder Wünsche habt.</p>
+    <div class="q"><label class="t" for="e1">Radiosender (mit Ansprechperson)</label><textarea id="e1" name="Radiosender"></textarea></div>
+    <div class="q"><label class="t" for="e2">Unternehmen</label><textarea id="e2" name="Unternehmen"></textarea></div>
+    <div class="q"><label class="t" for="e3">Stiftungen</label><textarea id="e3" name="Stiftungen"></textarea></div>
+  </fieldset>
+
+  <fieldset data-s="8. Anlagen für die Briefe"><legend>8. Anlagen für die Briefe</legend>
+    <p class="hint">Was habt ihr, und was können wir bekommen?</p>
+    <label class="opt"><input type="checkbox" name="Anlagen" value="Freistellungs- oder Feststellungsbescheid"><span>Freistellungs- oder Feststellungsbescheid</span></label>
+    <label class="opt"><input type="checkbox" name="Anlagen" value="Satzung"><span>Satzung</span></label>
+    <label class="opt"><input type="checkbox" name="Anlagen" value="Jahresbericht"><span>Jahresbericht</span></label>
+    <label class="opt"><input type="checkbox" name="Anlagen" value="Finanzplan 2027"><span>Finanzplan 2027</span></label>
+  </fieldset>
+
+  <fieldset data-s="9. Instagram"><legend>9. Instagram</legend>
+    <div class="q"><span class="t">In der Link-Liste in der Bio darf „Spenden“ (arca-ev.de/spenden) an erster Stelle stehen.</span>
+      <label class="opt"><input type="radio" name="Spenden-Link an erster Stelle?" value="Ja"><span>Ja</span></label>
+      <label class="opt"><input type="radio" name="Spenden-Link an erster Stelle?" value="Nein"><span>Nein</span></label>
+    </div>
+    <div class="q"><label class="t" for="i1">Wer aus dem Team spricht im Reel?</label><input id="i1" name="Person im Reel" type="text"></div>
+    <label class="opt"><input type="checkbox" name="Einverständnis Reel" value="Die Person ist einverstanden"><span>Die Person ist damit einverstanden</span></label>
+    <div class="q"><span class="t">Auf eurer Website enthält der Link zur Mitgliedschaft einen Tippfehler („mitgleiden“). Korrigieren oder umleiten?</span>
+      <label class="opt"><input type="radio" name="Tippfehler im Mitgliedschafts-Link beheben?" value="Ja"><span>Ja</span></label>
+      <label class="opt"><input type="radio" name="Tippfehler im Mitgliedschafts-Link beheben?" value="Nein"><span>Nein</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-s="10. Miete und Finanzierung"><legend>10. Miete und Finanzierung</legend>
+    <div class="q"><label class="t" for="f1">filia.die frauenstiftung schreibt auf ihrer Website, dass sie die Raummiete der Fasiathek mitfinanziert. Bis wann läuft diese Förderung, und wie viel der Miete 2027 ist damit gedeckt?</label><textarea id="f1" name="filia: Laufzeit und Anteil"></textarea></div>
+    <div class="q"><label class="t" for="f2">Wer hat die Miete 2026 sonst getragen? (Eigenmittel, Spenden, Stiftung, Förderung)</label><textarea id="f2" name="Miete 2026 getragen von"></textarea></div>
+    <div class="q"><span class="t">Ist ein Mietanteil im Budget der Koordinierungsstelle enthalten?</span>
+      <label class="opt"><input type="radio" name="Mietanteil im Budget der Koordinierungsstelle?" value="Ja"><span>Ja</span></label>
+      <label class="opt"><input type="radio" name="Mietanteil im Budget der Koordinierungsstelle?" value="Nein"><span>Nein</span></label>
+    </div>
+    <div class="q"><label class="t" for="f3">Habt ihr für 2027 schon bei anderen Stiftungen angefragt? Bei welchen?</label><textarea id="f3" name="Andere Stiftungen angefragt"></textarea></div>
+  </fieldset>
+
+  <fieldset data-s="11. GivingTuesday, Dienstag 1. Dezember"><legend>11. GivingTuesday, Di 1. Dezember</legend>
+    <p class="hint">Das ist schon in wenigen Tagen. Wir würden mittags eine Story posten, mit Link zu arca-ev.de/spenden.</p>
+    <div class="quote">„Heute ist GivingTuesday. 🖤 Die Fasiathek ist für alle da: Eintritt frei, keine Anmeldung. Wenn du uns unterstützen möchtest: spenden oder Mitglied werden. Link hier. #GivingTuesdayDE“</div>
+    <div class="q">
+      <label class="opt"><input type="radio" name="Story am 1. Dezember" value="Ja, ihr dürft das posten"><span>Ja, ihr dürft das posten</span></label>
+      <label class="opt"><input type="radio" name="Story am 1. Dezember" value="Nein, lieber nicht"><span>Nein, lieber nicht</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-s="Sonstiges"><legend>Noch etwas?</legend>
+    <div class="q"><label class="t" for="x1">Anmerkungen oder Fragen an uns</label><textarea id="x1" name="Anmerkungen"></textarea></div>
+    <div class="q"><label class="t" for="x2">Wer hat ausgefüllt?</label><input id="x2" name="Ausgefüllt von" type="text"></div>
+  </fieldset>
+  </form>
+
+  <p id="status" role="status"></p>
+  <div id="out"></div>
+</main>
+
+<div class="bar"><div class="in">
+  <button class="copy" id="bCopy" type="button">Kopieren</button>
+  <button class="send" id="bSend" type="button">Senden</button>
+</div></div>
+
+<script>
+const f = document.getElementById('f'), st = document.getElementById('status'), out = document.getElementById('out');
+const KEY = 'arca-spenden-v1';
+
+function collect() {
+  let txt = 'ARCA, Spendenaufruf: Angaben\n';
+  f.querySelectorAll('fieldset').forEach(fs => {
+    const lines = [], seen = new Set();
+    fs.querySelectorAll('input,select,textarea').forEach(el => {
+      const n = el.name; if (!n) return;
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        if (seen.has(n)) return; seen.add(n);
+        const v = [...fs.querySelectorAll('[name="' + CSS.escape(n) + '"]:checked')].map(x => x.value);
+        if (v.length) lines.push(n + ': ' + v.join(', '));
+      } else if (el.value.trim()) lines.push(n + ': ' + el.value.trim());
+    });
+    if (lines.length) txt += '\n' + fs.dataset.s + '\n' + lines.join('\n') + '\n';
+  });
+  return txt.trim() + '\n';
+}
+
+function save() {
+  const d = {};
+  f.querySelectorAll('input,select,textarea').forEach((el, i) => {
+    d[i] = (el.type === 'radio' || el.type === 'checkbox') ? el.checked : el.value;
+  });
+  try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+}
+function restore() {
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY) || '{}');
+    f.querySelectorAll('input,select,textarea').forEach((el, i) => {
+      if (!(i in d)) return;
+      if (el.type === 'radio' || el.type === 'checkbox') el.checked = d[i]; else el.value = d[i];
+    });
+  } catch (e) {}
+}
+f.addEventListener('input', save); f.addEventListener('change', save);
+restore();
+
+function note(m) { st.textContent = m; }
+
+document.getElementById('bSend').onclick = async () => {
+  const text = collect();
+  if (navigator.share) {
+    try { await navigator.share({ title: 'ARCA Spendenaufruf: Angaben', text }); note('Danke! Gesendet.'); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  document.getElementById('bCopy').click();
+};
+document.getElementById('bCopy').onclick = async () => {
+  const text = collect();
+  try { await navigator.clipboard.writeText(text); note('Kopiert. Jetzt in WhatsApp oder E-Mail einfügen und an Lamine schicken.'); }
+  catch (e) { out.style.display = 'block'; out.textContent = text; note('Bitte den Text unten markieren, kopieren und an Lamine schicken.'); }
+};
+</script>
+</body>
+</html>
